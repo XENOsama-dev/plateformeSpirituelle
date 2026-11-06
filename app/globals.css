@@ -1,0 +1,121 @@
+@import "tailwindcss";
+/* =========================================
+   ÉTOILES FILANTES & LUMIÈRE DIVINE
+   ========================================= */
+
+/* Le rayon de lumière divine qui descend du ciel */
+.divine-light-ray {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60vw;
+  height: 120vh;
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.15) 0%, rgba(251, 191, 36, 0.05) 40%, transparent 100%);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0% 100%);
+  filter: blur(40px);
+  animation: ray-pulse 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes ray-pulse {
+  0% {
+    opacity: 0.4;
+    width: 50vw;
+  }
+
+  100% {
+    opacity: 0.8;
+    width: 70vw;
+  }
+}
+
+/* Étoile filante */
+.shooting-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8), 0 0 20px 4px rgba(251, 191, 36, 0.4);
+  animation: shoot 6s linear infinite;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* La traînée de l'étoile filante */
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(-45deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-800px) translateY(800px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* Variations pour les étoiles filantes */
+.shooting-star-1 {
+  top: 10%;
+  left: 80%;
+  animation-delay: 0s;
+  animation-duration: 8s;
+}
+
+.shooting-star-2 {
+  top: 30%;
+  left: 90%;
+  animation-delay: 3s;
+  animation-duration: 10s;
+}
+
+.shooting-star-3 {
+  top: 50%;
+  left: 70%;
+  animation-delay: 7s;
+  animation-duration: 7s;
+}
+
+/* Fond céleste */
+.bg-divine-gradient {
+  background: radial-gradient(circle at 50% 0%, #1e1145 0%, #0f172a 40%, #080c17 100%);
+}
+/* Animation de scintillement pour les étoiles */
+@keyframes twinkle {
+  0% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+  100% { opacity: 0.1; transform: scale(0.8); }
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  animation: twinkle linear infinite;
+}
+
+.star-gold {
+  background-color: #fbbf24;
+  box-shadow: 0 0 10px 2px rgba(251, 191, 36, 0.4);
+}
